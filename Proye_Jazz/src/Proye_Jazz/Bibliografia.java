@@ -15,9 +15,9 @@ public class Bibliografia {
     String Area;
     String Categoria;
     String Isbn;
-    String Tipo;// verificar 
-
-    public Bibliografia(String Autor, String Año, String Titulo, String Descripcion, String Palabra, String Edicion, String Temas, String Coplas, String Area, String Categoria, String Isbn, String Tipo) {
+    
+    
+    public Bibliografia(String Autor, String Año, String Titulo, String Descripcion, String Palabra, String Edicion, String Temas, String Coplas, String Area, String Categoria, String Isbn) {
         this.Autor = Autor;
         this.Año = Año;
         this.Titulo = Titulo;
@@ -29,7 +29,7 @@ public class Bibliografia {
         this.Area = Area;
         this.Categoria = Categoria;
         this.Isbn = Isbn;
-        this.Tipo = Tipo;
+        
     }
 
     public String getAutor() {
@@ -119,12 +119,5 @@ public class Bibliografia {
     public void setIsbn(String Isbn) {
         this.Isbn = Isbn;
     }
-
-    public String getTipo() {
-        return Tipo;
-    }
-
-    public void setTipo(String Tipo) {
-        this.Tipo = Tipo;
-    }   
+ 
 }

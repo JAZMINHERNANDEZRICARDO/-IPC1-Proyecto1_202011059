@@ -7,6 +7,11 @@ public class Cre_Usuarios extends javax.swing.JFrame {
     int fila;
     Usuarios usuarios[];
     Bibliografia biblio[];
+    TESIS_METO tesis_meto[];
+    REVISTA_METO revista_meto[];
+    DIGITAL_METO digital_meto[];
+    
+    
     int Id;
     int rol;
     String Nom;
@@ -15,9 +20,12 @@ public class Cre_Usuarios extends javax.swing.JFrame {
     String Pass;
     int sel;
     
-    public Cre_Usuarios(Usuarios usuarios[],Bibliografia biblio[]) {
+    public Cre_Usuarios(Usuarios usuarios[],Bibliografia biblio[],TESIS_METO tesis_meto[],REVISTA_METO revista_meto[],DIGITAL_METO digital_meto[]) {
         this.usuarios = usuarios;
         this.biblio=biblio;
+        this.tesis_meto=tesis_meto;
+        this.revista_meto=revista_meto;
+        this.digital_meto=digital_meto;
         initComponents();
         Cargar();
        
@@ -275,7 +283,7 @@ public class Cre_Usuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
-        Administrador admin = new Administrador(usuarios,biblio);
+        Administrador admin = new Administrador(usuarios,biblio,tesis_meto,revista_meto,digital_meto);
         admin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_VolverActionPerformed

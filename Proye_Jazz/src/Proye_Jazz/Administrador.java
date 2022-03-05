@@ -4,10 +4,17 @@ public class Administrador extends javax.swing.JFrame {
     
     Usuarios usuarios[];
     Bibliografia biblio[];
+    TESIS_METO tesis_meto[];
+    REVISTA_METO revista_meto[];
+    DIGITAL_METO digital_meto[];
     
-    public Administrador(Usuarios usuarios[],Bibliografia biblio[]) {
+    public Administrador(Usuarios usuarios[],Bibliografia biblio[],TESIS_METO tesis_meto[],REVISTA_METO revista_meto[],DIGITAL_METO digital_meto[]) {
         this.usuarios = usuarios;
         this.biblio=biblio;
+        this.tesis_meto=tesis_meto;
+        this.revista_meto=revista_meto;
+        this.digital_meto=digital_meto;
+        
         initComponents();
     }
 
@@ -45,10 +52,20 @@ public class Administrador extends javax.swing.JFrame {
         });
 
         ReporteUsuarios.setText("Reporte");
+        ReporteUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReporteUsuariosActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("BIBLIOGRAFIA");
 
         MostrarBibliografia.setText("Mostrar");
+        MostrarBibliografia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarBibliografiaActionPerformed(evt);
+            }
+        });
 
         ReporteBibliografia.setText("Reporte");
 
@@ -105,16 +122,26 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
-        Login log = new Login(usuarios,biblio);
+        Login log = new Login(usuarios,biblio,tesis_meto,revista_meto,digital_meto);
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_VolverActionPerformed
 
     private void MostrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarUsuariosActionPerformed
-        Cre_Usuarios mos = new Cre_Usuarios(usuarios,biblio);
+        Cre_Usuarios mos = new Cre_Usuarios(usuarios,biblio,tesis_meto,revista_meto,digital_meto);
         mos.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_MostrarUsuariosActionPerformed
+
+    private void MostrarBibliografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarBibliografiaActionPerformed
+       TIPO_BIBLIO mos = new TIPO_BIBLIO(usuarios,biblio,tesis_meto,revista_meto,digital_meto);
+        mos.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_MostrarBibliografiaActionPerformed
+
+    private void ReporteUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ReporteUsuariosActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MostrarBibliografia;

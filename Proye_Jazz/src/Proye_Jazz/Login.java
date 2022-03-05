@@ -6,10 +6,17 @@ public class Login extends javax.swing.JFrame {
     
     Usuarios usuarios[];
     Bibliografia biblio[];
+    TESIS_METO tesis_meto[];
+    REVISTA_METO revista_meto[];
+    DIGITAL_METO digital_meto[];
     
-    public Login(Usuarios usuarios[],Bibliografia biblio[]) {
+    public Login(Usuarios usuarios[],Bibliografia biblio[],TESIS_METO tesis_meto[],REVISTA_METO revista_meto[],DIGITAL_METO digital_meto[]) {
         this.usuarios = usuarios;
         this.biblio=biblio;
+        this.tesis_meto=tesis_meto;
+        this.revista_meto=revista_meto;
+        this.digital_meto=digital_meto;
+        
         initComponents();
     }
 
@@ -104,7 +111,7 @@ public class Login extends javax.swing.JFrame {
         for (int i = 0; i < usuarios.length; i++) {
             if (usuarios[i] != null) {
                 if (usuarios[i].getNom().equals(Usu) && usuarios[i].getPass().equals(Contra)) {
-                    Administrador admin = new Administrador(usuarios,biblio);
+                    Administrador admin = new Administrador(usuarios,biblio,tesis_meto,revista_meto,digital_meto);
                     admin.setVisible(true);
                     this.dispose();
                 }else{
