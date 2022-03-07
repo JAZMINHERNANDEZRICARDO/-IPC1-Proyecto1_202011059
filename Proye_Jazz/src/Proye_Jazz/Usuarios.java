@@ -8,14 +8,24 @@ public class Usuarios {
     String apell;
     String user;
     String pass;
+    String libro1;
+    String libro2;
+    String libro3;
+    String libro4;
+    String libro5;
 
-    public Usuarios(int id, String nom, String apell, String user,  int rol, String pass) {
+    public Usuarios(int id, String nom, String apell, String user,  int rol, String pass,String libro1,String libro2,String libro3,String libro4,String libro5) {
         this.id = id;
         this.rol = rol;
         this.nom = nom;
         this.apell = apell;
         this.user = user;
         this.pass = pass;
+        this.libro1 = libro1;
+        this.libro2 = libro2;
+        this.libro3 = libro3;
+        this.libro4 = libro4;
+        this.libro5 = libro5;
     }
 
     public int getId() {
@@ -64,6 +74,46 @@ public class Usuarios {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+    
+    public String getLibro1() {
+        return libro1;
+    }
+
+    public void setLibro1(String libro1) {
+        this.libro1 = libro1;
+    }
+
+    public String getLibro2() {
+        return libro2;
+    }
+
+    public void setLibro2(String libro2) {
+        this.libro2 = libro2;
+    }
+
+    public String getLibro3() {
+        return libro3;
+    }
+
+    public void setLibro3(String libro3) {
+        this.libro3 = libro3;
+    }
+
+    public String getLibro4() {
+        return libro4;
+    }
+
+    public void setLibro4(String libro4) {
+        this.libro4 = libro4;
+    }
+
+    public String getLibro5() {
+        return libro5;
+    }
+
+    public void setLibro5(String libro5) {
+        this.libro5 = libro5;
     }
     
 }

@@ -6,16 +6,13 @@ public class Login extends javax.swing.JFrame {
     
     Usuarios usuarios[];
     Bibliografia biblio[];
-    TESIS_METO tesis_meto[];
-    REVISTA_METO revista_meto[];
-    DIGITAL_METO digital_meto[];
+    public static int coordenada;
+
     
-    public Login(Usuarios usuarios[],Bibliografia biblio[],TESIS_METO tesis_meto[],REVISTA_METO revista_meto[],DIGITAL_METO digital_meto[]) {
+    public Login(Usuarios usuarios[],Bibliografia biblio[]) {
         this.usuarios = usuarios;
         this.biblio=biblio;
-        this.tesis_meto=tesis_meto;
-        this.revista_meto=revista_meto;
-        this.digital_meto=digital_meto;
+
         
         initComponents();
     }
@@ -60,39 +57,42 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(89, Short.MAX_VALUE)
+                .addContainerGap(95, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TXT_Usu)
-                                    .addComponent(TXT_Contra, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(Cancelar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Cancelar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                             .addComponent(Iniciar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(67, 67, 67))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(143, 143, 143))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TXT_Usu, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TXT_Contra, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(97, 97, 97))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(140, 140, 140))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(140, 140, 140))))
+                        .addGap(131, 131, 131))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(TXT_Usu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TXT_Contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TXT_Usu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(0, 0, 0)
+                .addComponent(TXT_Contra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(Iniciar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Cancelar)
@@ -111,13 +111,51 @@ public class Login extends javax.swing.JFrame {
         for (int i = 0; i < usuarios.length; i++) {
             if (usuarios[i] != null) {
                 if (usuarios[i].getNom().equals(Usu) && usuarios[i].getPass().equals(Contra)) {
-                    Administrador admin = new Administrador(usuarios,biblio,tesis_meto,revista_meto,digital_meto);
+                    String ur;
+                    coordenada=i;
+                    
+                    if (Usu.equals("admin")&& Contra.equals("admin")) {
+                    Administrador admin = new Administrador(usuarios,biblio);
                     admin.setVisible(true);
                     this.dispose();
+                    setVisible(false);
+                    }else{
+                    inicio_usu ad = new inicio_usu(usuarios,biblio);
+                    ad.setVisible(true);
+                    setVisible(false);
+                    String texto;
+                    String texto1;
+                    String texto2;
+                    texto=usuarios[i].getNom()+" "+usuarios[i].getApell();
+                        if (usuarios[i].getRol()==1) {
+                            
+                            ur="ESTUDIANTE";
+                            texto1="MI NOMBRE ES "+usuarios[i].getNom()+" "+usuarios[i].getApell()+" MI ROL ES DE "+ur;                   
+                    texto2="MI NUMERO DE ID ES  "+usuarios[i].getId()+" MI USUARIO ES "+usuarios[i].getUser();
+                    ad.VARIABLE_NOM.setText(texto);
+                    ad.iddddd.setText(texto1);
+                    ad.jLabel3.setText(texto2);
+                    this.dispose();
+                    
+ 
+                        }else{
+                            ur="CATEFRATICO";
+                            texto1="MI NOMBRE ES "+usuarios[i].getNom()+" "+usuarios[i].getApell()+" MI ROL ES DE "+ur;                   
+                    texto2="MI NUMERO DE ID ES  "+usuarios[i].getId()+" MI USUARIO ES "+usuarios[i].getUser();
+                    ad.VARIABLE_NOM.setText(texto);
+                    ad.iddddd.setText(texto1);
+                    ad.jLabel3.setText(texto2);
+                    this.dispose();
+
+                        }
+
+
+                    }
+                    
                 }else{
                     TXT_Usu.setText("");
                     TXT_Contra.setText("");
-                    JOptionPane.showMessageDialog(null, "Usuario o contraseñas incorrectas o inexistentes");
+                  //  JOptionPane.showMessageDialog(null, "Usuario o contraseñas incorrectas o inexistentes");
                 }
             }
         }

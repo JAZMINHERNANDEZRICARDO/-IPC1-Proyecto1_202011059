@@ -7,9 +7,7 @@ public class Cre_Usuarios extends javax.swing.JFrame {
     int fila;
     Usuarios usuarios[];
     Bibliografia biblio[];
-    TESIS_METO tesis_meto[];
-    REVISTA_METO revista_meto[];
-    DIGITAL_METO digital_meto[];
+
     
     
     int Id;
@@ -18,14 +16,19 @@ public class Cre_Usuarios extends javax.swing.JFrame {
     String Ape;
     String User;
     String Pass;
+    String LI_libro1;
+    String LI_libro2;
+    String LI_libro3;
+    String LI_libro4;
+    String LI_libro5;
+    
+    
     int sel;
     
-    public Cre_Usuarios(Usuarios usuarios[],Bibliografia biblio[],TESIS_METO tesis_meto[],REVISTA_METO revista_meto[],DIGITAL_METO digital_meto[]) {
+    public Cre_Usuarios(Usuarios usuarios[],Bibliografia biblio[]) {
         this.usuarios = usuarios;
         this.biblio=biblio;
-        this.tesis_meto=tesis_meto;
-        this.revista_meto=revista_meto;
-        this.digital_meto=digital_meto;
+
         initComponents();
         Cargar();
        
@@ -78,6 +81,12 @@ public class Cre_Usuarios extends javax.swing.JFrame {
         jLabel7.setText("CONTRASEÑA");
 
         jLabel8.setText("CONFRIMAR CONTRASEÑA");
+
+        TXT_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXT_IDActionPerformed(evt);
+            }
+        });
 
         Btn_Insertar.setText("INSERTAR");
         Btn_Insertar.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +257,7 @@ public class Cre_Usuarios extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 291, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -283,20 +292,28 @@ public class Cre_Usuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
-        Administrador admin = new Administrador(usuarios,biblio,tesis_meto,revista_meto,digital_meto);
+        Administrador admin = new Administrador(usuarios,biblio);
         admin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_VolverActionPerformed
 
     private void Btn_InsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_InsertarActionPerformed
-        Id = Integer.parseInt(TXT_ID.getText());
+       
+        String uno=TXT_CONT.getText();;
+        String dos=TXT_CONFI.getText();
+                
+        if (uno.equals(dos)) {
+            Id = Integer.parseInt(TXT_ID.getText());
         Nom = TXT_NOM.getText();
         Ape = TXT_APE.getText();
         User = TXT_USU.getText();
         rol = Integer.parseInt(TXT_ROL.getText());
         Pass = TXT_CONT.getText();
         
-        usuarios [Proye_Jazz.contador] = new Usuarios(Id, Nom, Ape, User, rol, Pass);
+        
+        usuarios [Proye_Jazz.contador] = new Usuarios(Id, Nom, Ape, User, rol, Pass,LI_libro1,LI_libro2,LI_libro3,LI_libro4,LI_libro5);
+        
+        
         Proye_Jazz.contador ++;
         
         TXT_ID.setText("");
@@ -306,6 +323,21 @@ public class Cre_Usuarios extends javax.swing.JFrame {
         TXT_ROL.setText("");
         TXT_CONT.setText("");
         TXT_CONFI.setText("");
+            
+        }else{
+            TXT_ID.setText("");
+        TXT_NOM.setText("");
+        TXT_APE.setText("");
+        TXT_USU.setText("");
+        TXT_ROL.setText("");
+        TXT_CONT.setText("");
+        TXT_CONFI.setText("");
+            JOptionPane.showMessageDialog(this, "las contraseñas no son igules");
+        }
+      
+            
+        
+        
         
     }//GEN-LAST:event_Btn_InsertarActionPerformed
 
@@ -317,7 +349,7 @@ public class Cre_Usuarios extends javax.swing.JFrame {
         int arol = Integer.parseInt(TXT_ROL.getText());
         String aPass = TXT_CONT.getText();
         
-        usuarios [sel] = new Usuarios(aId, aNom, aApe, aUser, arol, aPass);
+        usuarios [sel] = new Usuarios(aId, aNom, aApe, aUser, arol, aPass,LI_libro1,LI_libro2,LI_libro3,LI_libro4,LI_libro5);
         
         for (int i = 0; i < TablaDatos.getColumnCount(); i++) {
             
@@ -362,6 +394,10 @@ public class Cre_Usuarios extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_Btn_EliminarActionPerformed
+
+    private void TXT_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TXT_IDActionPerformed
 
     private void Cargar(){
         
