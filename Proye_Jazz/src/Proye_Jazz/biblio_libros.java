@@ -19,7 +19,9 @@ public class biblio_libros extends javax.swing.JFrame {
             this.biblio=biblio;
         initComponents();
     }
-
+    public void mostrar(){
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,7 +39,7 @@ public class biblio_libros extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        most = new javax.swing.JTextArea();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -98,9 +100,9 @@ public class biblio_libros extends javax.swing.JFrame {
             .addGap(0, 117, Short.MAX_VALUE)
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        most.setColumns(20);
+        most.setRows(5);
+        jScrollPane1.setViewportView(most);
 
         jButton6.setText("SALIR");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -184,21 +186,22 @@ public class biblio_libros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      Login admin1 = new Login(usuarios,biblio);
-        
-    System.out.println(usuarios[admin1.coordenada].getLibro2());
+    most.setText("");
+    Login admin1 = new Login(usuarios,biblio);
+    most.setText(usuarios[admin1.coordenada].getLibro2());    
+   
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    most.setText("");
     Login admin1 = new Login(usuarios,biblio);
-        
-        System.out.println(usuarios[admin1.coordenada].getLibro3());
+    most.setText(usuarios[admin1.coordenada].getLibro3());
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-     Login admin1 = new Login(usuarios,biblio);
-        
-        System.out.println(usuarios[admin1.coordenada].getLibro5());
+    most.setText("");
+    Login admin1 = new Login(usuarios,biblio);
+    most.setText(usuarios[admin1.coordenada].getLibro5());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -206,9 +209,9 @@ public class biblio_libros extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Login admin1 = new Login(usuarios,biblio);
-        
-        System.out.println(usuarios[admin1.coordenada].getLibro1());
+    most.setText("");
+    Login admin1 = new Login(usuarios,biblio);
+    most.setText(usuarios[admin1.coordenada].getLibro1());    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -218,9 +221,10 @@ public class biblio_libros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      Login admin1 = new Login(usuarios,biblio);
-        
-        System.out.println(usuarios[admin1.coordenada].getLibro4());
+    most.setText("");
+    Login admin1 = new Login(usuarios,biblio);
+    most.setText(usuarios[admin1.coordenada].getLibro4());
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -240,7 +244,7 @@ public class biblio_libros extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextArea most;
     // End of variables declaration//GEN-END:variables
 }

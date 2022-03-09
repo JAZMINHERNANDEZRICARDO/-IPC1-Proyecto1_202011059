@@ -15,7 +15,14 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
 
     Usuarios usuarios[];
     Bibliografia biblio[];
-    int contador=0;
+    Login admin1 = new Login(usuarios,biblio);
+    String texto;
+    //verifica el llenado de los libros
+    public static int contador=0;
+    // mantiene el resultado en los libros
+    public int contador2=0;
+    
+    
     
 
     private TableRowSorter trsfiltro;
@@ -42,9 +49,9 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
     private void initComponents() {
 
         jSpinner1 = new javax.swing.JSpinner();
+        jButton1 = new javax.swing.JButton();
         CAJA_BUSQUEDA = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -56,6 +63,13 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+
+        jButton1.setText("LOGOUT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,8 +90,6 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-
-        jButton1.setText("LOGOUT");
 
         jButton2.setText("REGRESAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -182,16 +194,11 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(168, 168, 168)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(62, 62, 62))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(62, 62, 62))
             .addGroup(layout.createSequentialGroup()
                 .addGap(360, 360, 360)
                 .addComponent(jButton3)
@@ -207,29 +214,27 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(14, 14, 14)
+                        .addGap(38, 38, 38)
                         .addComponent(nomb, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(CAJA_BUSQUEDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(CAJA_BUSQUEDA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addGap(20, 20, 20)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
@@ -249,7 +254,7 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+    System.out.println(usuarios[admin1.coordenada].getCon_li());
     biblio_libros admin5 = new biblio_libros(usuarios,biblio);
     admin5.setVisible(true);
         this.dispose();
@@ -280,31 +285,36 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
     }//GEN-LAST:event_CAJA_BUSQUEDAKeyTyped
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+     usuarios[admin1.coordenada].setCon_li(contador2);
+           
+    System.out.println(usuarios[admin1.coordenada].getLibro5());
+    
+    System.out.println(contador);     
     inicio_usu admin = new inicio_usu(usuarios,biblio);
     admin.setVisible(true);
     setVisible(false);
-   this.dispose();
+    this.dispose();
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nue_liMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nue_liMouseClicked
-      
+      //OBTIENE LOS DATOS DE MIS TABLAS Y CREA LOS LIBROS
         sel=nue_li.getSelectedRow();
-        Login admin1 = new Login(usuarios,biblio);
+        
         String a ;
-         String b ;
-          String c ;
-           String d ;
-            String e ;
-             String f ;
-              String g ;
-               String h ;
-                String k ;
-                 String l ;
-                  String m ;
-                  String n ;
-                  String texto;
+        String b ;
+        String c ;
+        String d ;
+        String e ;
+        String f ;
+        String g ;
+        String h ;
+        String k ;
+        String l ;
+        String m ;
+        String n ;
+        
                   
                 
         a=nue_li.getValueAt(sel,0).toString();
@@ -321,34 +331,40 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
         n=nue_li.getValueAt(sel,11).toString();
         
         fila=sel; 
-         texto="AUTOR "+a+" DE LA(EL) "+n+"SE CREO EN EL AÑO"+b; 
+        texto=" AUTOR "+a+" DE LA(EL) "+n+" TITULO "+c+" Y EDICION "+"\n"+f+", SE CREO EN EL AÑO "+b+" TEMAS PRINCIPALES "+g+"."+"\n"+" DESCRIPCION DEL LIBRO "+d; 
+        
+    }//GEN-LAST:event_nue_liMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+     contador++;
+     
         if (contador==1) {
-                
+            contador2++;
+             
                 usuarios[admin1.coordenada].setLibro1(texto);
-                System.out.println(usuarios[admin1.coordenada].getLibro1());
-                 System.out.println(contador);            
+            
         }else{
         if (contador==2) {
+            contador2++;
             usuarios[admin1.coordenada].setLibro2(texto);
-                System.out.println(usuarios[admin1.coordenada].getLibro2());
-                 System.out.println(contador);     
+     
         }else{
         if (contador==3) {
+            contador2++;
             usuarios[admin1.coordenada].setLibro3(texto);
-                System.out.println(usuarios[admin1.coordenada].getLibro3());
-                 System.out.println(contador);  
+
                 
         }else{
         if (contador==4) {
+            contador2++;
         usuarios[admin1.coordenada].setLibro4(texto);
-                System.out.println(usuarios[admin1.coordenada].getLibro4());
-                 System.out.println(contador); 
+
     
         }else{
         if (contador==5) {
+             contador2++;
         usuarios[admin1.coordenada].setLibro5(texto);
-                System.out.println(usuarios[admin1.coordenada].getLibro5());
-                 System.out.println(contador); 
+           
             
         }else{
          JOptionPane.showMessageDialog(this, "el limite es de 5 libros");   
@@ -357,15 +373,20 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
         }
         }
         }
+        //contador2=usuarios[admin1.coordenada].getCon_li();
+        System.out.println(usuarios[admin1.coordenada].getCon_li());
         
-    }//GEN-LAST:event_nue_liMouseClicked
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-     contador++;
+        contador2=0;
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void filtro (){
-  //  String a= Elegir_filtro.getSelectedItem();
+        
+  // filtra los datos de mi tabla
     String ele = (String) jComboBox1.getSelectedItem();
     
         if (ele=="AUTOR") {
@@ -418,11 +439,16 @@ public class BIBLIO_VIRTUAL extends javax.swing.JFrame {
             filtro = CAJA_BUSQUEDA.getText();
             trsfiltro.setRowFilter(RowFilter.regexFilter(CAJA_BUSQUEDA.getText(),10));  
                     
-        }}}}}}}}}}}}
+        }else{
+                if (ele=="TIPO") {
+            filtro = CAJA_BUSQUEDA.getText();
+            trsfiltro.setRowFilter(RowFilter.regexFilter(CAJA_BUSQUEDA.getText(),11)); 
+                    
+                }}}}}}}}}}}}}
     
     
     private void Cargar1(){
-        
+        //hace la carga para la tabla
         String datos [][] = new String[biblio.length][12];
         
         for (int i = 0; i < biblio.length; i++) {

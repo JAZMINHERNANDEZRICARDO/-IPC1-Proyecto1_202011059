@@ -1,6 +1,6 @@
 package Proye_Jazz;
 
-import javax.swing.JOptionPane;
+
 
 public class Login extends javax.swing.JFrame {
     
@@ -104,6 +104,10 @@ public class Login extends javax.swing.JFrame {
 
     private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
         String Usu, Contra;
+        // para que guarde los libros
+        
+        BIBLIO_VIRTUAL.contador=usuarios[coordenada].getCon_li();
+        System.out.println(usuarios[coordenada].getCon_li());
         
         Usu = TXT_Usu.getText();
         Contra = TXT_Contra.getText();

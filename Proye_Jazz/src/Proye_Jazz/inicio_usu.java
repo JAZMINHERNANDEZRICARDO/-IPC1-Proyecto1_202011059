@@ -166,8 +166,9 @@ public class inicio_usu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     String tex; 
     Login admin1 = new Login(usuarios,biblio);
-    System.out.println(admin1.coordenada);
-    
+
+    System.out.println( usuarios[admin1.coordenada].getCon_li());
+   
     BIBLIO_VIRTUAL admin = new BIBLIO_VIRTUAL(usuarios,biblio);
     admin.setVisible(true);
     tex = VARIABLE_NOM.getText();
@@ -185,10 +186,12 @@ public class inicio_usu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-     Login admin8 = new Login(usuarios,biblio);
+    System.out.println(usuarios[Login.coordenada].getCon_li());
+    BIBLIO_VIRTUAL.contador =0;
+    Login admin8 = new Login(usuarios,biblio);
     admin8.setVisible(true);
     setVisible(false);
-   this.dispose();
+    this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

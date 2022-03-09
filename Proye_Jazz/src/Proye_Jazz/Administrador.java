@@ -1,10 +1,22 @@
 package Proye_Jazz;
+import java.io.*;
 
 public class Administrador extends javax.swing.JFrame {
     
     Usuarios usuarios[];
     Bibliografia biblio[];
-
+       //USUARIOS
+        File archivo = new File("Reportes\\usuarios.html");
+        // aperturar un archivo
+        FileWriter escribir;
+        // crear nuevas lineas dentro un archivo
+        PrintWriter nuevaLinea;
+        // BIBLIOGRAFIAS
+        File archivo2 = new File("Reportes\\bibliografias.html");
+        // aperturar un archivo
+        FileWriter escribir2;
+        // crear nuevas lineas dentro un archivo
+        PrintWriter nuevaLinea2;
     
     public Administrador(Usuarios usuarios[],Bibliografia biblio[]) {
         this.usuarios = usuarios;
@@ -64,6 +76,11 @@ public class Administrador extends javax.swing.JFrame {
         });
 
         ReporteBibliografia.setText("Reporte");
+        ReporteBibliografia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReporteBibliografiaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,8 +156,358 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_MostrarBibliografiaActionPerformed
 
     private void ReporteUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteUsuariosActionPerformed
-        // TODO add your handling code here:
+       carga ();
     }//GEN-LAST:event_ReporteUsuariosActionPerformed
+
+    private void ReporteBibliografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteBibliografiaActionPerformed
+      carga2 ();
+    }//GEN-LAST:event_ReporteBibliografiaActionPerformed
+    
+    
+    public void carga2 (){
+        if(!archivo.exists()){
+            
+            try{
+                //crear mi archivo
+                archivo2.createNewFile();
+                // le pasao el archivo donde quiero escribir, true 
+                escribir2 = new FileWriter(archivo2,true);
+                // escribiendo dentro de mi archivo
+                nuevaLinea2 = new PrintWriter(escribir2);
+                nuevaLinea2.println("<!DOCTYPE html>\n" +
+                                    "<html lang=\"en\">\n" +
+                                    "<head>\n" +
+                                    "    <meta charset=\"UTF-8\">\n" +
+                                    "    <title>Document</title>\n" +
+                                    "</head>\n" +
+                                    "<body>");
+                
+                
+                nuevaLinea2.println("<h1><center>REPORTE BIBLIOGRAFIA</center></h1>");
+                nuevaLinea2.println("<table width=\"60%\" border=\"1\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"#000000\">");
+                
+                nuevaLinea2.println("<tr>");
+                
+                nuevaLinea2.println("<th>AUTOR</th>");
+                nuevaLinea2.println("<th>AÑO</th>");
+                nuevaLinea2.println("<th>TITULO</th>");
+                nuevaLinea2.println("<th>DESCRIPCION</th>");
+                nuevaLinea2.println("<th>PALABRAS</th>");
+                nuevaLinea2.println("<th>EDICION</th>");
+                
+                nuevaLinea2.println("<th>AREA</th>");
+                nuevaLinea2.println("<th>TEMAS</th>");
+                nuevaLinea2.println("<th>COPIAS</th>");
+                nuevaLinea2.println("<th>CATEGORIA</th>");
+                nuevaLinea2.println("<th>ISBRI</th>");
+                nuevaLinea2.println("<th>TIPO</th>");
+                
+                nuevaLinea2.println("</tr>");
+                
+              /*  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>*/
+                for(int i=0; i<biblio.length;i++){  ///aquiiiii
+                    //solo cuando los datos existan
+                    if(biblio[i]!=null){
+                        nuevaLinea2.println("<tr>");
+                        
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getAutor());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getAño());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getTitulo());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getDescripcion());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getPalabra());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getEdicion());   
+                        nuevaLinea2.print("</td>");
+                        
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getArea());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getTemas());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getCoplas());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getCategoria());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getIsbn());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getTipo());   
+                        nuevaLinea2.print("</td>");
+                        
+                        nuevaLinea2.println("</tr>");
+                    }
+                }
+                nuevaLinea2.println("</table>");
+                
+                
+                
+                
+                // ---------------------------
+                nuevaLinea2.println("</body>\n" +
+                                   "</html>");
+                // me cierra mi archivo
+                escribir2.close();
+                
+            }catch (Exception e) {
+                
+            }
+        }else{
+            try {
+                // le pasao el archivo donde quiero escribir, true 
+                escribir2 = new FileWriter(archivo2,true);
+                // escribiendo dentro de mi archivo
+                nuevaLinea2 = new PrintWriter(escribir2);
+                nuevaLinea2.println("<!DOCTYPE html>\n" +
+                                    "<html lang=\"en\">\n" +
+                                    "<head>\n" +
+                                    "    <meta charset=\"UTF-8\">\n" +
+                                    "    <title>Document</title>\n" +
+                                    "</head>\n" +
+                                    "<body>");
+                
+                 nuevaLinea2.println("<h1><center>REPORTE BIBLIOGRAFIA</center></h1>");
+                nuevaLinea2.println("<table width=\"60%\" border=\"1\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"#000000\">");
+                
+                nuevaLinea2.println("<tr>");
+                nuevaLinea2.println("<th>AUTOR</th>");
+                nuevaLinea2.println("<th>AÑO</th>");
+                nuevaLinea2.println("<th>TITULO</th>");
+                nuevaLinea2.println("<th>DESCRIPCION</th>");
+                nuevaLinea2.println("<th>PALABRAS</th>");
+                nuevaLinea2.println("<th>EDICION</th>");
+                
+                nuevaLinea2.println("<th>AREA</th>");
+                nuevaLinea2.println("<th>TEMAS</th>");
+                nuevaLinea2.println("<th>COPIAS</th>");
+                nuevaLinea2.println("<th>CATEGORIA</th>");
+                nuevaLinea2.println("<th>ISBRI</th>");
+                nuevaLinea2.println("<th>TIPO</th>");
+                nuevaLinea2.println("</tr>");
+                
+                for(int i=0; i<biblio.length;i++){
+                    //solo cuando los datos existan
+                    if(biblio[i]!=null){
+                        nuevaLinea2.println("<tr>");
+                        
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getAutor());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getAño());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getTitulo());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getDescripcion());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getPalabra());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getEdicion());   
+                        nuevaLinea2.print("</td>");
+                        
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getArea());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getTemas());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getCoplas());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getCategoria());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getIsbn());   
+                        nuevaLinea2.print("</td>");
+                        nuevaLinea2.print("<td>");
+                        nuevaLinea2.print(biblio[i].getTipo());   
+                        nuevaLinea2.print("</td>");
+                        
+                        nuevaLinea2.println("</tr>");
+                    }
+                }
+                nuevaLinea2.println("</table>");
+                
+                // ---------------------------
+                nuevaLinea2.println("</body>\n" +
+                                   "</html>");
+                // me cierra mi archivo
+                escribir2.close();
+            } catch (Exception e) {
+            }
+        
+            
+        }
+        
+    }
+    
+    public void carga (){
+        if(!archivo.exists()){
+            
+            try{
+                //crear mi archivo
+                archivo.createNewFile();
+                // le pasao el archivo donde quiero escribir, true 
+                escribir = new FileWriter(archivo,true);
+                // escribiendo dentro de mi archivo
+                nuevaLinea = new PrintWriter(escribir);
+                nuevaLinea.println("<!DOCTYPE html>\n" +
+                                    "<html lang=\"en\">\n" +
+                                    "<head>\n" +
+                                    "    <meta charset=\"UTF-8\">\n" +
+                                    "    <title>Document</title>\n" +
+                                    "</head>\n" +
+                                    "<body>");
+                
+                
+                nuevaLinea.println("<h1>REPORTE USUARIOS</h1>");
+                nuevaLinea.println("<table width=\"100%\" border=\"1\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"#000000\">");
+                nuevaLinea.println("<tr>");
+                nuevaLinea.println("<th>ID</th>");
+                nuevaLinea.println("<th>NOMBRE</th>");
+                nuevaLinea.println("<th>APELLIDO</th>");
+                nuevaLinea.println("<th>USER</th>");
+                nuevaLinea.println("<th>ROL</th>");
+                nuevaLinea.println("<th>CONTRASEÑA</th>");
+                nuevaLinea.println("</tr>");
+                
+              /*  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>*/
+                for(int i=0; i<usuarios.length;i++){
+                    //solo cuando los datos existan
+                    if(usuarios[i]!=null){
+                        nuevaLinea.println("<tr>");
+                        
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getId());   
+                        nuevaLinea.print("</td>");
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getNom());   
+                        nuevaLinea.print("</td>");
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getApell());   
+                        nuevaLinea.print("</td>");
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getUser());   
+                        nuevaLinea.print("</td>");
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getRol());   
+                        nuevaLinea.print("</td>");
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getPass());   
+                        nuevaLinea.print("</td>");
+                        
+                        nuevaLinea.println("</tr>");
+                    }
+                }
+                nuevaLinea.println("</table>");
+                
+                
+                
+                
+                // ---------------------------
+                nuevaLinea.println("</body>\n" +
+                                   "</html>");
+                // me cierra mi archivo
+                escribir.close();
+                
+            }catch (Exception e) {
+                
+            }
+        }else{
+            try {
+                // le pasao el archivo donde quiero escribir, true 
+                escribir = new FileWriter(archivo,true);
+                // escribiendo dentro de mi archivo
+                nuevaLinea = new PrintWriter(escribir);
+                nuevaLinea.println("<!DOCTYPE html>\n" +
+                                    "<html lang=\"en\">\n" +
+                                    "<head>\n" +
+                                    "    <meta charset=\"UTF-8\">\n" +
+                                    "    <title>Document</title>\n" +
+                                    "</head>\n" +
+                                    "<body>");
+                
+                nuevaLinea.println("<h1><center>REPORTE USUARIOS</center></h1>");
+                nuevaLinea.println("<table width=\"100%\" border=\"1\" cellpadding=\"0\" cellspacing=\"0\" bordercolor=\"#000000\">");
+                
+                nuevaLinea.println("<tr>");
+                nuevaLinea.println("<th>ID</th>");
+                nuevaLinea.println("<th>NOMBRE</th>");
+                nuevaLinea.println("<th>APELLIDO</th>");
+                nuevaLinea.println("<th>USER</th>");
+                nuevaLinea.println("<th>ROL</th>");
+                nuevaLinea.println("<th>CONTRASEÑA</th>");
+                nuevaLinea.println("</tr>");
+                
+                for(int i=0; i<usuarios.length;i++){
+                    //solo cuando los datos existan
+                    if(usuarios[i]!=null){
+                        nuevaLinea.println("<tr>");
+                        
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getId());   
+                        nuevaLinea.print("</td>");
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getNom());   
+                        nuevaLinea.print("</td>");
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getApell());   
+                        nuevaLinea.print("</td>");
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getUser());   
+                        nuevaLinea.print("</td>");
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getRol());   
+                        nuevaLinea.print("</td>");
+                        nuevaLinea.print("<td>");
+                        nuevaLinea.print(usuarios[i].getPass());   
+                        nuevaLinea.print("</td>");
+                        
+                        nuevaLinea.println("</tr>");
+                    }
+                }
+                nuevaLinea.println("</table>");
+                
+                // ---------------------------
+                nuevaLinea.println("</body>\n" +
+                                   "</html>");
+                // me cierra mi archivo
+                escribir.close();
+            } catch (Exception e) {
+            }
+        
+            
+        }
+        
+    } 
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MostrarBibliografia;

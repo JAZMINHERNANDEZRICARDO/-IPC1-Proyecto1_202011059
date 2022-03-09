@@ -10,8 +10,8 @@ public class Proye_Jazz {
         Bibliografia[] biblio=new Bibliografia[50];
         
         
-        usuarios [0] = new Usuarios(1, "admin", "admin", "admin", 0, "admin"," "," "," "," "," ");
-        
+        usuarios [0] = new Usuarios(1, "admin", "admin", "admin", 0, "admin"," "," "," "," "," ",0);
+   
         Login log = new Login(usuarios,biblio);
         log.setVisible(true);
     }

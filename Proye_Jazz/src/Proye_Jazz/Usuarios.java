@@ -13,8 +13,9 @@ public class Usuarios {
     String libro3;
     String libro4;
     String libro5;
+    int con_li;
 
-    public Usuarios(int id, String nom, String apell, String user,  int rol, String pass,String libro1,String libro2,String libro3,String libro4,String libro5) {
+    public Usuarios(int id, String nom, String apell, String user,  int rol, String pass,String libro1,String libro2,String libro3,String libro4,String libro5,int con_li) {
         this.id = id;
         this.rol = rol;
         this.nom = nom;
@@ -26,6 +27,15 @@ public class Usuarios {
         this.libro3 = libro3;
         this.libro4 = libro4;
         this.libro5 = libro5;
+        this.con_li = con_li;
+    }
+
+    public int getCon_li() {
+        return con_li;
+    }
+
+    public void setCon_li(int con_li) {
+        this.con_li = con_li;
     }
 
     public int getId() {

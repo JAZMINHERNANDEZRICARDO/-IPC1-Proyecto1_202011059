@@ -1,7 +1,7 @@
 package Proye_Jazz;
 
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
 
 public class Cre_Usuarios extends javax.swing.JFrame {
     int fila;
@@ -21,6 +21,7 @@ public class Cre_Usuarios extends javax.swing.JFrame {
     String LI_libro3;
     String LI_libro4;
     String LI_libro5;
+    int con_l;
     
     
     int sel;
@@ -311,7 +312,7 @@ public class Cre_Usuarios extends javax.swing.JFrame {
         Pass = TXT_CONT.getText();
         
         
-        usuarios [Proye_Jazz.contador] = new Usuarios(Id, Nom, Ape, User, rol, Pass,LI_libro1,LI_libro2,LI_libro3,LI_libro4,LI_libro5);
+        usuarios [Proye_Jazz.contador] = new Usuarios(Id, Nom, Ape, User, rol, Pass,LI_libro1,LI_libro2,LI_libro3,LI_libro4,LI_libro5,con_l);
         
         
         Proye_Jazz.contador ++;
@@ -349,7 +350,7 @@ public class Cre_Usuarios extends javax.swing.JFrame {
         int arol = Integer.parseInt(TXT_ROL.getText());
         String aPass = TXT_CONT.getText();
         
-        usuarios [sel] = new Usuarios(aId, aNom, aApe, aUser, arol, aPass,LI_libro1,LI_libro2,LI_libro3,LI_libro4,LI_libro5);
+        usuarios [sel] = new Usuarios(aId, aNom, aApe, aUser, arol, aPass,LI_libro1,LI_libro2,LI_libro3,LI_libro4,LI_libro5,con_l);
         
         for (int i = 0; i < TablaDatos.getColumnCount(); i++) {
             
